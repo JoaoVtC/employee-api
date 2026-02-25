@@ -9,6 +9,8 @@ import com.example.employee.repository.EmployeeRepository;
 import com.example.employee.service.DepartmentService;
 import com.example.employee.service.EmployeeService;
 
+import jakarta.validation.Valid;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -80,32 +82,20 @@ public class EmployeeController {
     // ❌ Recebe Entity como request — substituir por DTO com @Valid (TODO 1, 5)
     // ❌ Sem regras de negócio — mover para Service (TODO 3)
     @PostMapping
-    public ResponseEntity<EmployeeResponse> create(@RequestBody EmployeeRequest employee) {
+    public ResponseEntity<EmployeeResponse> create(@RequestBody @Valid EmployeeRequest employee) {
         EmployeeResponse saved = employeeService.save(employee);
         return ResponseEntity.status(201).body(saved);
     }
 
     // ❌ Recebe Entity como request — substituir por DTO com @Valid
     @PutMapping("/{id}")
-    public ResponseEntity<Employee> update(@PathVariable Long id, @RequestBody Employee employee) {
-        return employeeRepository.findById(id)
-                .map(existing -> {
-                    existing.setName(employee.getName());
-                    existing.setEmail(employee.getEmail());
-                    existing.setCpf(employee.getCpf());
-                    existing.setSalary(employee.getSalary());
-                    Employee updated = employeeRepository.save(existing);
-                    return ResponseEntity.ok(updated);
-                })
-                .orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<EmployeeResponse> update(@PathVariable Long id, @RequestBody @Valid EmployeeRequest employee) {
+        return ResponseEntity.ok(employeeService.update(id, employee));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
-        if (!employeeRepository.existsById(id)) {
-            return ResponseEntity.notFound().build();
-        }
-        employeeRepository.deleteById(id);
+        employeeService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
 }

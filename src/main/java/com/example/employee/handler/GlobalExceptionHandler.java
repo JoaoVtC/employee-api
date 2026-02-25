@@ -41,7 +41,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(EmployeeNotFoundException.class)
-    public ResponseEntity<ProblemDetail> handleProductNotFound(
+    public ResponseEntity<ProblemDetail> handleEmployeeNotFound(
             EmployeeNotFoundException ex, HttpServletRequest request) {
 
         ProblemDetail problem = ProblemDetail.forStatusAndDetail(
@@ -57,7 +57,7 @@ public class GlobalExceptionHandler {
 
 
     @ExceptionHandler(DuplicateEmailException.class)
-    public ResponseEntity<ProblemDetail> handleDuplicateSku(
+    public ResponseEntity<ProblemDetail> handleDuplicateEmail(
             DuplicateEmailException ex, HttpServletRequest request) {
 
         ProblemDetail problem = ProblemDetail.forStatusAndDetail(

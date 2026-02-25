@@ -28,9 +28,7 @@ Content-Type: application/json
   "email": "lucas.oliveira@email.com",
   "cpf": "123.456.789-09",
   "salary": 5500.00,
-  "department": {
-    "id": 2
-  }
+  "departmentId": 2
 }
 
 ### ----- Criar Funcionário — Departamento Vendas -----
@@ -43,9 +41,7 @@ Content-Type: application/json
   "email": "beatriz.santos@email.com",
   "cpf": "987.654.321-00",
   "salary": 4200.00,
-  "department": {
-    "id": 3
-  }
+  "departmentId": 3
 }
 
 ### ----- Criar Funcionário — Salário abaixo do mínimo (TODO 3) -----
@@ -59,9 +55,7 @@ Content-Type: application/json
   "email": "teste.baixo@email.com",
   "cpf": "111.222.333-44",
   "salary": 500.00,
-  "department": {
-    "id": 1
-  }
+  "departmentId": 1
 }
 
 ### ----- Criar Funcionário — Email duplicado (TODO 3) -----
@@ -72,12 +66,9 @@ Content-Type: application/json
 
 {
   "name": "Clone Maria",
-  "email": "maria.silva@email.com",
-  "cpf": "555.666.777-88",
-  "salary": 3000.00,
-  "department": {
-    "id": 1
-  }
+  "email": "beatriz.santos@email.com",
+  "cpf": "987.654.321-00",
+  "salary": 3000.00
 }
 
 ### ----- Criar Funcionário — Campos inválidos (TODO 5) -----
@@ -91,9 +82,7 @@ Content-Type: application/json
   "email": "nao-e-email",
   "cpf": "123",
   "salary": -100,
-  "department": {
-    "id": 1
-  }
+  "departmentId": 1
 }
 
 ### ----- Atualizar Funcionário -----
@@ -104,8 +93,9 @@ Content-Type: application/json
 {
   "name": "Maria Silva Santos",
   "email": "maria.silva.santos@email.com",
-  "cpf": "111.222.333-44",
-  "salary": 6500.00
+  "cpf": "987.654.321-00",
+  "salary": 6500.00,
+  "departmentId": 2
 }
 
 ### ----- Atualizar — Não encontrado -----
