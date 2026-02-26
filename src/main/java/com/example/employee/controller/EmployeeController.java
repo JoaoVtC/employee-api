@@ -6,7 +6,6 @@ import com.example.employee.mapper.EmployeeMapper;
 import com.example.employee.model.Department;
 import com.example.employee.model.Employee;
 import com.example.employee.repository.EmployeeRepository;
-import com.example.employee.service.DepartmentService;
 import com.example.employee.service.EmployeeService;
 
 import jakarta.validation.Valid;
